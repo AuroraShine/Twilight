@@ -5,10 +5,8 @@
 #ifndef TWILIGHT_DX9_GRAPHICS_H
 #define TWILIGHT_DX9_GRAPHICS_H
 
-
-class dx9_graphics {
-
+class dx9_graphics
+{
 };
-
 
 #endif //TWILIGHT_DX9_GRAPHICS_H

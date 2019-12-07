@@ -43,38 +43,84 @@
 #include <d3dcompiler.h>
 
 // Statics Libraries
-#pragma comment(lib,"d3d9.lib")
-#pragma comment(lib,"d3dx9.lib")
-#pragma comment(lib,"d3d11.lib")
-#pragma comment(lib,"d3dx11.lib")
-#pragma comment(lib,"dinput8.lib")
-#pragma comment(lib,"dsound.lib")
-#pragma comment(lib,"dxguid.lib")
-#pragma comment(lib,"dxerr.lib")
-#pragma comment(lib,"d3dcompiler.lib")
-#pragma comment(lib,"WinMM.lib")
+#pragma comment(lib, "d3d9.lib")
+#pragma comment(lib, "d3dx9.lib")
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "d3dx11.lib")
+#pragma comment(lib, "dinput8.lib")
+#pragma comment(lib, "dsound.lib")
+#pragma comment(lib, "dxguid.lib")
+#pragma comment(lib, "dxerr.lib")
+#pragma comment(lib, "d3dcompiler.lib")
+#pragma comment(lib, "WinMM.lib")
 
 #ifndef UNICODE
 #error "DirectX requires a Unicode build."
 #endif
 
-#define SAFE_RELEASE(Pointer)	{if(Pointer){(Pointer)->Release();(Pointer) = NULL;}}
-#define SAFE_DELETE(Pointer)	{if(Pointer){delete(Pointer);(Pointer) = NULL;}}
-#define SAFE_DELETE_ARRAY(Pointer) {if(Pointer){delete[](Pointer);(Pointer) = NULL;}}
+#define SAFE_RELEASE(Pointer)     \
+    {                             \
+        if (Pointer)              \
+        {                         \
+            (Pointer)->Release(); \
+            (Pointer) = NULL;     \
+        }                         \
+    }
+#define SAFE_DELETE(Pointer)  \
+    {                         \
+        if (Pointer)          \
+        {                     \
+            delete (Pointer); \
+            (Pointer) = NULL; \
+        }                     \
+    }
+#define SAFE_DELETE_ARRAY(Pointer) \
+    {                              \
+        if (Pointer)               \
+        {                          \
+            delete[](Pointer);     \
+            (Pointer) = NULL;      \
+        }                          \
+    }
 
-#if defined (DEBUG) || defined (_DEBUG)
+#if defined(DEBUG) || defined(_DEBUG)
 #ifndef CHECK
-#define CHECK(x)	{HRESULT hr = (x); if(FAILED(hr)){DXTRACE_ERR_MSGBOX(L#x, hr);}}
+#define CHECK(x)                         \
+    {                                    \
+        HRESULT hr = (x);                \
+        if (FAILED(hr))                  \
+        {                                \
+            DXTRACE_ERR_MSGBOX(L#x, hr); \
+        }                                \
+    }
 #endif
 #ifndef VERIFY
-#define VERIFY(x)	{HRESULT hr = (x); if(FAILED(hr)){DXTRACE_ERR_MSGBOX(L#x, hr); return E_FAIL;}}
+#define VERIFY(x)                        \
+    {                                    \
+        HRESULT hr = (x);                \
+        if (FAILED(hr))                  \
+        {                                \
+            DXTRACE_ERR_MSGBOX(L#x, hr); \
+            return E_FAIL;               \
+        }                                \
+    }
 #endif
 #else
 #ifndef CHECK
-#define CHECK(x)	{HRESULT hr = (x);}
+#define CHECK(x)          \
+    {                     \
+        HRESULT hr = (x); \
+    }
 #endif
 #ifndef VERIFY
-#define VERIFY(x)	{HRESULT hr = (x); if(FAILED(hr)){return E_FAIL;}}
+#define VERIFY(x)          \
+    {                      \
+        HRESULT hr = (x);  \
+        if (FAILED(hr))    \
+        {                  \
+            return E_FAIL; \
+        }                  \
+    }
 #endif
 #endif
 
