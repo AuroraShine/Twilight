@@ -10,4 +10,4 @@ include_directories("tripart/dx/inc")
 
 link_directories("tripart/dx/lib/x86")
 
-add_executable(twilight main.cpp graphics/dx9_graphics.cpp graphics/dx9_graphics.h graphics/dx9_common.h)
+add_executable(twilight main.cpp graphics/dx9_graphics.cpp graphics/dx9_graphics.h graphics/dx9_common.h nets/nets_tcp_server.cpp nets/nets_tcp_server.h)
